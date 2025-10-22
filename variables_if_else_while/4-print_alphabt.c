@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - affiche l'alphabet en minuscules sauf 'q' et 'e', suivi d'un saut de ligne
+ * main - imprime l'alphabet en minuscules sauf e et q
  *
  * Return: 0 (succès)
  */
@@ -12,10 +12,9 @@ int main(void)
 	for (c = 'a'; c <= 'z'; c++)
 	{
 		if (c != 'e' && c != 'q')
-			putchar(c);   /* 1ère utilisation de putchar */
+			putchar(c);
 	}
 
-	putchar('\n');          /* 2ème utilisation de putchar */
-
+	putchar('\n');
 	return (0);
 }

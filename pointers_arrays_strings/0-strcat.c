@@ -15,7 +15,9 @@ char *_strcat(char *dest, char *src)
 
     /* Find the end of dest */
     while (dest[i] != '\0')
+    {
         i++;
+    }
 
     /* Append src to dest */
     while (src[j] != '\0')

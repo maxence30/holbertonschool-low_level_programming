@@ -3,8 +3,8 @@
 #include "variadic_functions.h"
 
 /**
- * print_all - imprime divers types selon un format
- * @format: liste des types d'arguments
+ * print_all - prints anything
+ * @format: list of argument types
  *
  * Return: Nothing.
  */
@@ -12,40 +12,50 @@ void print_all(const char * const format, ...)
 {
 	va_list ap;
 	int i = 0;
-	char *str, *sep = "";
+	char *str;
+	char *sep = "";
+
+	if (!format) /* IF #1 */
+	{
+		printf("\n");
+		return;
+	}
 
 	va_start(ap, format);
 
-	while (format && format[i])
+	while (format[i]) /* WHILE #1 */
 	{
-		if (format[i] == 'c' || format[i] == 'i' ||
-		    format[i] == 'f' || format[i] == 's')
+		switch (format[i])
 		{
-			printf("%s", sep);
-
-			if (format[i] == 'c')
-				printf("%c", va_arg(ap, int));
-
-			if (format[i] == 'i')
-				printf("%d", va_arg(ap, int));
-
-			if (format[i] == 'f')
-				printf("%f", (float)va_arg(ap, double));
-
-			if (format[i] == 's')
-			{
-				str = va_arg(ap, char *);
-				if (str == NULL)
-					str = "(nil)";
-				printf("%s", str);
-			}
-
+		case 'c':
+			printf("%s%c", sep, va_arg(ap, int));
 			sep = ", ";
-		}
+			break;
 
+		case 'i':
+			printf("%s%d", sep, va_arg(ap, int));
+			sep = ", ";
+			break;
+
+		case 'f':
+			printf("%s%f", sep, (float)va_arg(ap, double));
+			sep = ", ";
+			break;
+
+		case 's':
+			str = va_arg(ap, char *);
+			if (!str) /* IF #2 */
+				str = "(nil)";
+			printf("%s%s", sep, str);
+			sep = ", ";
+			break;
+
+		default:
+			break;
+		}
 		i++;
 	}
 
-	printf("\n");
 	va_end(ap);
+	printf("\n");
 }

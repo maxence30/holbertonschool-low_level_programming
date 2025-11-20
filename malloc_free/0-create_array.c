@@ -1,12 +1,12 @@
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * create_array - creates an array of chars, and initializes it with a specific char
- * @size: the size of the array
- * @c: the char to fill the array with
+ * create_array - creates an array of chars and initializes it with a char
+ * @size: size of the array
+ * @c: character to initialize with
  *
- * Return: pointer to the array, or NULL if it fails or size = 0
+ * Return: pointer to the array, or NULL if it fails / size is 0
  */
 char *create_array(unsigned int size, char c)
 {
@@ -20,8 +20,12 @@ char *create_array(unsigned int size, char c)
     if (arr == NULL)
         return (NULL);
 
-    for (i = 0; i < size; i++)
+    i = 0;
+    while (i < size)
+    {
         arr[i] = c;
+        i++;
+    }
 
     return (arr);
 }

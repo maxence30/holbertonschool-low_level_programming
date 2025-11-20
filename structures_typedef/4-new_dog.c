@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "dog.h"
 
@@ -16,12 +15,11 @@ dog_t *new_dog(char *name, float age, char *owner)
 	char *name_copy, *owner_copy;
 	int i, len;
 
-	/* Allocate memory for struct dog */
 	d = malloc(sizeof(dog_t));
 	if (!d)
 		return (NULL);
 
-	/* Compute length of name */
+	/* Copy name manually */
 	len = 0;
 	while (name[len])
 		len++;
@@ -31,8 +29,6 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(d);
 		return (NULL);
 	}
-
-	/* Copy name manually */
 	i = 0;
 	while (name[i])
 	{
@@ -41,7 +37,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	}
 	name_copy[i] = '\0';
 
-	/* Compute length of owner */
+	/* Copy owner manually */
 	len = 0;
 	while (owner[len])
 		len++;
@@ -52,8 +48,6 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(d);
 		return (NULL);
 	}
-
-	/* Copy owner manually */
 	i = 0;
 	while (owner[i])
 	{
@@ -62,7 +56,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	}
 	owner_copy[i] = '\0';
 
-	/* Fill struct */
+	/* Initialize struct */
 	d->name = name_copy;
 	d->age = age;
 	d->owner = owner_copy;

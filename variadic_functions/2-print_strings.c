@@ -3,9 +3,9 @@
 #include "variadic_functions.h"
 
 /**
- * print_strings - imprime des chaînes séparées par un séparateur
- * @separator: chaîne séparatrice
- * @n: nombre de chaînes passées en paramètres
+ * print_strings - prints strings followed by a new line
+ * @separator: string printed between strings
+ * @n: number of strings passed to the function
  *
  * Return: Nothing.
  */
@@ -26,12 +26,10 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		else
 			printf("%s", str);
 
-        /* print separator except after last element */
 		if (separator != NULL && i < n - 1)
 			printf("%s", separator);
 	}
 
 	printf("\n");
-
 	va_end(ap);
 }

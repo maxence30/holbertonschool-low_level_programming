@@ -1,15 +1,19 @@
-#include <stdlib.h>
 #include "lists.h"
+#include <stdlib.h>
 
+/**
+ * free_list - frees a list_t list
+ * @head: pointer to the list
+ */
 void free_list(list_t *head)
 {
-    list_t *temp;
+	list_t *tmp;
 
-    while (head != NULL)
-    {
-        temp = head;          /* garder l’adresse du nœud courant */
-        head = head->next;    /* avancer au nœud suivant */
-        free(temp->str);      /* libérer la chaîne du nœud */
-        free(temp);           /* libérer le nœud */
-    }
+	while (head != NULL)
+	{
+		tmp = head->next;
+		free(head->str);
+		free(head);
+		head = tmp;
+	}
 }

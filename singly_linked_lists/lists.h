@@ -5,9 +5,11 @@
 
 /**
  * struct list_s - singly linked list
- * @str: malloc'ed string
- * @len: string length
- * @next: pointer to next node
+ * @str: string (malloc'ed)
+ * @len: length of the string
+ * @next: pointer to the next node
+ *
+ * Description: singly linked list node structure
  */
 typedef struct list_s
 {
@@ -17,5 +19,6 @@ typedef struct list_s
 } list_t;
 
 size_t print_list(const list_t *h);
+size_t list_len(const list_t *h);
 
-#endif
+#endif /* LISTS_H */
